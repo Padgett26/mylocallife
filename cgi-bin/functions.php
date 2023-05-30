@@ -4,6 +4,7 @@ session_start();
 include "../globalFunctions.php";
 
 $db = db_mll();
+$db_ccdc = db_ccdc();
 
 // *** logout ***
 function logout ()
