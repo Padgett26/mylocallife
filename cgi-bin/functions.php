@@ -1,30 +1,9 @@
 <?php
 session_start();
 
-function db ()
-{
-    $dbhost = 'localhost';
-    $dbname = 'mll_db';
-    $dbuser = 'mll_user';
-    $dbpass = 'mLl_pWd';
+include "../globalFunctions.php";
 
-    $db = new PDO("mysql:host=$dbhost; dbname=$dbname", "$dbuser", "$dbpass");
-
-    return $db;
-}
-
-function db_ccdc ()
-{
-    $ccdchost = 'localhost';
-    $ccdcname = 'ccdcks_site';
-    $ccdcuser = 'ccdcks_users';
-    $ccdcpass = 'users321';
-
-    $db_ccdc = new PDO("mysql:host=$ccdchost; dbname=$ccdcname", "$ccdcuser",
-            "$ccdcpass");
-
-    return $db_ccdc;
-}
+$db = db_mll();
 
 // *** logout ***
 function logout ()
@@ -42,7 +21,7 @@ function logout ()
 function login ($email, $pwd, $visitingIP)
 {
     $time = time();
-    $L1 = db()->prepare(
+    $L1 = db_mll()->prepare(
             "SELECT id,salt FROM users WHERE email = ? AND accessLevel >= '1'");
     $L1->execute(array(
             $email
@@ -55,7 +34,7 @@ function login ($email, $pwd, $visitingIP)
         return false;
     }
     $checkId = (isset($id) && $id > 0) ? $id : '0';
-    $L2 = db()->prepare(
+    $L2 = db_mll()->prepare(
             "SELECT COUNT(*) FROM logInFails WHERE (userId = ? || ipAddress = ?) && tryTime >= ($time - 300)");
     $L2->execute(array(
             $checkId,
@@ -65,7 +44,7 @@ function login ($email, $pwd, $visitingIP)
     if ($L2R[0] < 3) {
         $pwd = htmlspecialchars(trim($pwd));
         $hidepwd = hash('sha512', ($salt . $pwd), FALSE);
-        $L3 = db()->prepare(
+        $L3 = db_mll()->prepare(
                 "SELECT * FROM users WHERE email = ? AND password = ?");
         $L3->execute(array(
                 $email,
@@ -79,14 +58,14 @@ function login ($email, $pwd, $visitingIP)
                     "mylocal.life", 0);
             setcookie("staySignedIn", $_SESSION['myId'], $time + 1209600, "/",
                     "mylocal.life", 0); // set for 14 days
-            $L4 = db()->prepare(
+            $L4 = db_mll()->prepare(
                     "DELETE FROM logInFails WHERE userId = ? || ipAddress = ?");
             $L4->execute(array(
                     $checkId,
                     $visitingIP
             ));
         } else {
-            $L5 = db()->prepare(
+            $L5 = db_mll()->prepare(
                     "INSERT INTO logInFails VALUES(NULL,?,?,?,'0','0','0')");
             $L5->execute(array(
                     $checkId,
@@ -101,7 +80,7 @@ function login ($email, $pwd, $visitingIP)
 
 function isAdmin ($myId)
 {
-    $mastmt = db()->prepare("SELECT accessLevel FROM users WHERE id=?");
+    $mastmt = db_mll()->prepare("SELECT accessLevel FROM users WHERE id=?");
     $mastmt->execute(array(
             $myId
     ));
@@ -114,7 +93,7 @@ function isAdmin ($myId)
 function titleText ($myId, $highlightColor)
 {
     if ($myId != '0') {
-        $stmt = db()->prepare("SELECT firstName FROM users WHERE id=?");
+        $stmt = db_mll()->prepare("SELECT firstName FROM users WHERE id=?");
         $stmt->execute(array(
                 $myId
         ));
@@ -144,39 +123,39 @@ function delTree ($dir)
 
 function deleteUser ($myId)
 {
-    $stmt1 = db()->prepare("DELETE FROM classifieds WHERE userId = ?");
+    $stmt1 = db_mll()->prepare("DELETE FROM classifieds WHERE userId = ?");
     $stmt1->execute(array(
             $myId
     ));
-    $stmt2 = db()->prepare("DELETE FROM articles WHERE authorId = ?");
+    $stmt2 = db_mll()->prepare("DELETE FROM articles WHERE authorId = ?");
     $stmt2->execute(array(
             $myId
     ));
-    $stmt3 = db()->prepare("DELETE FROM directory WHERE userId = ?");
+    $stmt3 = db_mll()->prepare("DELETE FROM directory WHERE userId = ?");
     $stmt3->execute(array(
             $myId
     ));
-    $stmt4 = db()->prepare("DELETE FROM users WHERE id = ?");
+    $stmt4 = db_mll()->prepare("DELETE FROM users WHERE id = ?");
     $stmt4->execute(array(
             $myId
     ));
-    $stmt5 = db()->prepare("DELETE FROM blog WHERE userId = ?");
+    $stmt5 = db_mll()->prepare("DELETE FROM blog WHERE userId = ?");
     $stmt5->execute(array(
             $myId
     ));
-    $stmt6 = db()->prepare("DELETE FROM blogDescriptions WHERE userId = ?");
+    $stmt6 = db_mll()->prepare("DELETE FROM blogDescriptions WHERE userId = ?");
     $stmt6->execute(array(
             $myId
     ));
-    $stmt7 = db()->prepare("DELETE FROM blogFavorites WHERE myId = ?");
+    $stmt7 = db_mll()->prepare("DELETE FROM blogFavorites WHERE myId = ?");
     $stmt7->execute(array(
             $myId
     ));
-    $stmt8 = db()->prepare("DELETE FROM busiListing WHERE userId = ?");
+    $stmt8 = db_mll()->prepare("DELETE FROM busiListing WHERE userId = ?");
     $stmt8->execute(array(
             $myId
     ));
-    $stmt9 = db()->prepare("DELETE FROM scoreboard WHERE userId = ?");
+    $stmt9 = db_mll()->prepare("DELETE FROM scoreboard WHERE userId = ?");
     $stmt9->execute(array(
             $myId
     ));
@@ -184,18 +163,20 @@ function deleteUser ($myId)
     $stmt10->execute(array(
             $myId
     ));
-    $stmt11 = db()->prepare("SELECT id FROM surveyQuestions WHERE userId = ?");
+    $stmt11 = db_mll()->prepare(
+            "SELECT id FROM surveyQuestions WHERE userId = ?");
     $stmt11->execute(array(
             $myId
     ));
     while ($row11 = $stmt11->fetch()) {
         $x = $row11['id'];
-        $stmt13 = db()->prepare("DELETE FROM surveyAnswers WHERE surveyId = ?");
+        $stmt13 = db_mll()->prepare(
+                "DELETE FROM surveyAnswers WHERE surveyId = ?");
         $stmt13->execute(array(
                 $x
         ));
     }
-    $stmt12 = db()->prepare("DELETE FROM surveyQuestions WHERE userId = ?");
+    $stmt12 = db_mll()->prepare("DELETE FROM surveyQuestions WHERE userId = ?");
     $stmt12->execute(array(
             $myId
     ));
@@ -337,7 +318,7 @@ class functions
 
 function getZipAreas ($myZip)
 {
-    $zipcode1 = db()->prepare(
+    $zipcode1 = db_mll()->prepare(
             "SELECT longitude,latitude FROM zipCodes WHERE zipCode=?");
     $zipcode1->execute(array(
             $myZip
@@ -352,7 +333,8 @@ function getZipAreas ($myZip)
     $getZipCodes2 = array();
     $getZipCodes3 = array();
 
-    $zipcode2 = db()->prepare("SELECT zipCode,longitude,latitude FROM zipCodes");
+    $zipcode2 = db_mll()->prepare(
+            "SELECT zipCode,longitude,latitude FROM zipCodes");
     $zipcode2->execute(array(
             $myZip
     ));

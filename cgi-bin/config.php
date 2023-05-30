@@ -1,8 +1,6 @@
 <?php
 $time = time();
 
-$db = db();
-
 $stmtc = $db->prepare(
         "SELECT COUNT(*) FROM classifieds WHERE displayUntil >= ?");
 $stmtc->execute(array(
