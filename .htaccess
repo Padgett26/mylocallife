@@ -1,5 +1,0 @@
-
-AddHandler x-httpd-php .html .htm
-
-# RewriteEngine On
-# RewriteRule ^(.*)$ index.php?slug=$1 [QSA]
