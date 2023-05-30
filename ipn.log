@@ -1,0 +1,66 @@
+[2019-04-30 10:31 America/Chicago] HTTP request of validation request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 868
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=30.00&protection_eligibility=Eligible&address_status=unconfirmed&payer_id=KHNHDZHEK5E7E&address_street=30488+county+road+14&payment_date=08%3A31%3A14+Apr+30%2C+2019+PDT&payment_status=Completed&charset=windows-1252&address_zip=80735&first_name=Brad&mc_fee=1.17&address_country_code=US&address_name=Brad+Wingfield&notify_version=3.9&payer_status=unverified&business=jcs%40padgett-online.com&address_country=United+States&address_city=idalia&verify_sign=AG2nXUpErcOtZ9XVWyK.rkVy3FA0AHt7Nqa0z8LiVnwxtvg0LmTsz1Bn&payer_email=wingfieldfarms%40gmail.com&txn_id=9M122472RA630740F&payment_type=instant&last_name=Wingfield&address_state=CO&receiver_email=jcs%40padgett-online.com&payment_fee=1.17&receiver_id=CRKFEDY65ACBE&txn_type=send_money&mc_currency=USD&residence_country=US&transaction_subject=&payment_gross=30.00&ipn_track_id=105475938e482
+[2019-04-30 10:31 America/Chicago] HTTP response of validation request: HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+HTTP_X_PP_AZ_LOCATOR: dcg11.slc
+Paypal-Debug-Id: e448a2776d076
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: slc-b-origin-www-2.paypal.com
+Date: Tue, 30 Apr 2019 15:31:32 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=CdR1eoxe3cqqXqYaTDEIA4pi6Wly742gE-vbB4nTeReWTVHLwhejf9wP6HCSqiQlOI1AbEHsMMjXT94SYSnzb67bWVmxxchN14XSU_jqqN8gir_Gu7SHR7tM4NtI7e2gsM2tHUsQwzXyiy1LaDRcVCBZsCHlMqMEku4zGOYs1bbZJ-erG7Yk-yJ429XYDhmOANfUuqyUDsAOlYvnYegPB38lwrUHCckS8e7VTLdf9BGfNMPw4odBUTDUy701O8mMmluVAsGi6NqOWgvIe2frESLt7B3vzj07JFjTTpBt-6XRQdy3FWa-n7fX9BRQlhK9J6jxXqoGQVVVoQA5R8hvnwnf8xLTKSgNQJvfMaai-eQSEiO0WqZWp7hUFBkzQuevlt5BtqEBfwJG4GGIIyFhvXC0Grcqaep58dqsfou5nXCgW4TehX75WUUs4YW; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 27-Apr-2029 15:31:31 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 29-Apr-2021 15:31:31 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=name%3DLIVE6.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D1399507036%26HTTP_X_PP_AZ_LOCATOR%3Ddcg11.slc; Expires=Tue, 30 Apr 2019 16:01:32 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: AKDC=slc-b-origin-www-2.paypal.com; expires=Tue, 30-Apr-2019 16:01:32 GMT; path=/; secure
+Set-Cookie: akavpau_ppsd=1556638892~id=4a18e35ece1a1d69223cbb8bf0dd615b; Domain=www.paypal.com; Path=/; Secure; HttpOnly
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+[2019-04-30 10:31 America/Chicago] Verified IPN: cmd=_notify-validate&mc_gross=30.00&protection_eligibility=Eligible&address_status=unconfirmed&payer_id=KHNHDZHEK5E7E&address_street=30488+county+road+14&payment_date=08%3A31%3A14+Apr+30%2C+2019+PDT&payment_status=Completed&charset=windows-1252&address_zip=80735&first_name=Brad&mc_fee=1.17&address_country_code=US&address_name=Brad+Wingfield&notify_version=3.9&payer_status=unverified&business=jcs%40padgett-online.com&address_country=United+States&address_city=idalia&verify_sign=AG2nXUpErcOtZ9XVWyK.rkVy3FA0AHt7Nqa0z8LiVnwxtvg0LmTsz1Bn&payer_email=wingfieldfarms%40gmail.com&txn_id=9M122472RA630740F&payment_type=instant&last_name=Wingfield&address_state=CO&receiver_email=jcs%40padgett-online.com&payment_fee=1.17&receiver_id=CRKFEDY65ACBE&txn_type=send_money&mc_currency=USD&residence_country=US&transaction_subject=&payment_gross=30.00&ipn_track_id=105475938e482 
+[2021-03-30 08:38 America/Chicago] HTTP request of validation request:POST /cgi-bin/webscr HTTP/1.1
+Host: www.paypal.com
+Accept: */*
+Connection: Close
+Content-Length: 879
+Content-Type: application/x-www-form-urlencoded
+
+ for IPN payload: cmd=_notify-validate&mc_gross=450.00&protection_eligibility=Eligible&address_status=unconfirmed&payer_id=TH68D7QMLMUM8&address_street=1765+Road+10&payment_date=06%3A38%3A28+Mar+30%2C+2021+PDT&payment_status=Completed&charset=windows-1252&address_zip=67756&first_name=Bernadette&mc_fee=13.35&address_country_code=US&address_name=Bernadette+Luncsford&notify_version=3.9&payer_status=verified&business=jcs%40padgett-online.com&address_country=United+States&address_city=St+Francis&verify_sign=AUglNhHztggafge2lIRKeYig05V6ABbhnlwC7pwlZZxVNOalWIZ80M9Y&payer_email=luncsfordfamily%40yahoo.com&txn_id=2UU164024E005054G&payment_type=instant&last_name=Luncsford&address_state=KS&receiver_email=jcs%40padgett-online.com&payment_fee=13.35&receiver_id=CRKFEDY65ACBE&txn_type=send_money&mc_currency=USD&residence_country=US&transaction_subject=&payment_gross=450.00&ipn_track_id=429646c3ba522
+[2021-03-30 08:38 America/Chicago] HTTP response of validation request: HTTP/1.1 200 OK
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/html; charset=UTF-8
+Paypal-Debug-Id: 4da553b5a75a4
+X-Frame-Options: SAMEORIGIN
+DC: ccg11-origin-www-1.paypal.com
+X-Akamai-Transformed: 9 34 0 pmb=mRUM,1
+Date: Tue, 30 Mar 2021 13:38:39 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=5M8GenHctbKE9YRwUKeLqrndsE8YmiJf3VHUuyz-CCQ7A_6mHghszwfuv-waxmDrp-AHpCJOiuAu9kMtBSi_hF5G9ECYA3cZSDupARPTYOWCIClCGSW_GjPqIvEk9OcOntVFX2L-lfeskHQ_EZ8YKcag516tssaj3dEt80G5nrhmOJp6pbbwm_t8qXV3C6QoI4QwjiQCA4l1vu_W6yg1d4zN_l4Cztr-q1fdNPh0Dtj5RBiAjzVH-9XKnFWdl89j8GSX47wgw5OflT8eulq3-Ea1_yH6upzFmkQlnFGLE4Bz2EjL-UrkEe7tpV8HD6Nbnl3cxKkMzesrag143u0X6j2HDlbW742GROTOiAFgjLTqc0eUnHUC5SjfVtsCi3rhAhOhRzTarBCddRJIaLDQXI57pMAWCXEyzFBa1A0dT6Yef0_ZPQg14z1S5ni; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 28-Mar-2031 13:38:39 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 30-Mar-2023 13:38:39 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: l7_az=dcg02.phx; Path=/; Domain=paypal.com; Expires=Tue, 30 Mar 2021 14:08:39 GMT; HttpOnly; Secure
+Set-Cookie: ts=vreXpYrS%3D1711805918%26vteXpYrS%3D1617113318%26vr%3D835b8cb11780a7886c2fb7b3ff1dce5e%26vt%3D835b8cb11780a7886c2fb7b3ff1dce5d%26vtyp%3Dnew; Path=/; Domain=paypal.com; Expires=Fri, 29 Mar 2024 13:38:39 GMT; HttpOnly; Secure
+Set-Cookie: ts_c=vr%3D835b8cb11780a7886c2fb7b3ff1dce5e%26vt%3D835b8cb11780a7886c2fb7b3ff1dce5d; Path=/; Domain=paypal.com; Expires=Fri, 29 Mar 2024 13:38:39 GMT; Secure
+Set-Cookie: x-cdn=akamai; path=/; domain=.paypal.com; secure
+Server-Timing: edge; dur=38
+Server-Timing: origin; dur=1096
+Server-Timing: cdn-cache; desc=MISS
+Set-Cookie: akavpau_ppsd=1617112119~id=f97938dee57c2feb52301c1221911878; Domain=www.paypal.com; Path=/; HttpOnly; Secure; SameSite=None
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+[2021-03-30 08:38 America/Chicago] Verified IPN: cmd=_notify-validate&mc_gross=450.00&protection_eligibility=Eligible&address_status=unconfirmed&payer_id=TH68D7QMLMUM8&address_street=1765+Road+10&payment_date=06%3A38%3A28+Mar+30%2C+2021+PDT&payment_status=Completed&charset=windows-1252&address_zip=67756&first_name=Bernadette&mc_fee=13.35&address_country_code=US&address_name=Bernadette+Luncsford&notify_version=3.9&payer_status=verified&business=jcs%40padgett-online.com&address_country=United+States&address_city=St+Francis&verify_sign=AUglNhHztggafge2lIRKeYig05V6ABbhnlwC7pwlZZxVNOalWIZ80M9Y&payer_email=luncsfordfamily%40yahoo.com&txn_id=2UU164024E005054G&payment_type=instant&last_name=Luncsford&address_state=KS&receiver_email=jcs%40padgett-online.com&payment_fee=13.35&receiver_id=CRKFEDY65ACBE&txn_type=send_money&mc_currency=USD&residence_country=US&transaction_subject=&payment_gross=450.00&ipn_track_id=429646c3ba522 

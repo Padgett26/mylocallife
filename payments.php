@@ -1,0 +1,18 @@
+<div style="text-align:center;">
+<span style='font-weight: bold;'>Thank you</span>
+<br />
+<br />
+We hope our family of websites are helpful. And through your
+contribution to our sites we can continue to keep them free for those
+that need them.<br><br>
+<form action="https://www.paypal.com/donate" method="post" target="_top">
+	<input type="hidden" name="hosted_button_id" value="ARFLYDEMWR9QC" /> <input
+		type="image"
+		src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+		border="0" name="submit"
+		title="PayPal - The safer, easier way to pay online!"
+		alt="Donate with PayPal button" /> <img alt="" border="0"
+		src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1"
+		height="1" />
+</form>
+</div>

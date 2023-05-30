@@ -1,0 +1,73 @@
+[13-Mar-2023 17:40:21 UTC] PHP Warning:  Undefined array key "mSquareSize" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 84
+[13-Mar-2023 17:40:21 UTC] PHP Warning:  Undefined array key "mSquareDifficulty" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 85
+[13-Mar-2023 17:40:21 UTC] PHP Warning:  Undefined variable $goal in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 132
+[13-Mar-2023 17:40:21 UTC] PHP Warning:  Undefined array key "mSquareTime" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 133
+[13-Mar-2023 17:40:21 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mSquareE' in 'field list' in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php:191
+Stack trace:
+#0 /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php(191): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 191
+[13-Mar-2023 17:40:21 UTC] PHP Warning:  Undefined array key "mSquareSize" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 84
+[13-Mar-2023 17:40:21 UTC] PHP Warning:  Undefined array key "mSquareDifficulty" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 85
+[13-Mar-2023 17:40:21 UTC] PHP Warning:  Undefined variable $goal in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 132
+[13-Mar-2023 17:40:21 UTC] PHP Warning:  Undefined array key "mSquareTime" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 133
+[13-Mar-2023 17:40:21 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mSquareE' in 'field list' in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php:191
+Stack trace:
+#0 /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php(191): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 191
+[13-Mar-2023 17:40:40 UTC] PHP Warning:  Undefined array key "mSquareSize" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 84
+[13-Mar-2023 17:40:40 UTC] PHP Warning:  Undefined array key "mSquareDifficulty" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 85
+[13-Mar-2023 17:40:40 UTC] PHP Warning:  Undefined variable $goal in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 132
+[13-Mar-2023 17:40:40 UTC] PHP Warning:  Undefined array key "mSquareTime" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 133
+[13-Mar-2023 17:40:40 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mSquareE' in 'field list' in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php:191
+Stack trace:
+#0 /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php(191): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 191
+[13-Mar-2023 17:41:07 UTC] PHP Warning:  Undefined array key "mSquareSize" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 84
+[13-Mar-2023 17:41:07 UTC] PHP Warning:  Undefined array key "mSquareDifficulty" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 85
+[13-Mar-2023 17:41:07 UTC] PHP Warning:  Undefined variable $goal in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 132
+[13-Mar-2023 17:41:07 UTC] PHP Warning:  Undefined array key "mSquareTime" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 133
+[13-Mar-2023 17:41:07 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mSquareE' in 'field list' in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php:191
+Stack trace:
+#0 /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php(191): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 191
+[13-Mar-2023 17:41:07 UTC] PHP Warning:  Undefined array key "mSquareSize" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 84
+[13-Mar-2023 17:41:07 UTC] PHP Warning:  Undefined array key "mSquareDifficulty" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 85
+[13-Mar-2023 17:41:07 UTC] PHP Warning:  Undefined variable $goal in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 132
+[13-Mar-2023 17:41:07 UTC] PHP Warning:  Undefined array key "mSquareTime" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 133
+[13-Mar-2023 17:41:07 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mSquareE' in 'field list' in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php:191
+Stack trace:
+#0 /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php(191): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 191
+[13-Mar-2023 17:41:14 UTC] PHP Warning:  Undefined array key "mSquareSize" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 84
+[13-Mar-2023 17:41:14 UTC] PHP Warning:  Undefined array key "mSquareDifficulty" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 85
+[13-Mar-2023 17:41:14 UTC] PHP Warning:  Undefined variable $goal in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 132
+[13-Mar-2023 17:41:14 UTC] PHP Warning:  Undefined array key "mSquareTime" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 133
+[13-Mar-2023 17:41:14 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mSquareE' in 'field list' in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php:191
+Stack trace:
+#0 /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php(191): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 191
+[13-Mar-2023 17:41:14 UTC] PHP Warning:  Undefined array key "mSquareSize" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 84
+[13-Mar-2023 17:41:14 UTC] PHP Warning:  Undefined array key "mSquareDifficulty" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 85
+[13-Mar-2023 17:41:14 UTC] PHP Warning:  Undefined variable $goal in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 132
+[13-Mar-2023 17:41:14 UTC] PHP Warning:  Undefined array key "mSquareTime" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 133
+[13-Mar-2023 17:41:14 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mSquareE' in 'field list' in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php:191
+Stack trace:
+#0 /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php(191): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 191
+[13-Mar-2023 17:41:15 UTC] PHP Warning:  Undefined array key "mSquareSize" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 84
+[13-Mar-2023 17:41:15 UTC] PHP Warning:  Undefined array key "mSquareDifficulty" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 85
+[13-Mar-2023 17:41:15 UTC] PHP Warning:  Undefined variable $goal in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 132
+[13-Mar-2023 17:41:15 UTC] PHP Warning:  Undefined array key "mSquareTime" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 133
+[13-Mar-2023 17:41:15 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'mSquareE' in 'field list' in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php:191
+Stack trace:
+#0 /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php(191): PDOStatement->execute()
+#1 {main}
+  thrown in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 191
+[13-Mar-2023 18:00:46 UTC] PHP Warning:  Undefined array key "mSquareTime" in /home/jachpa/public_html/mylocal.life/games/mSquare/mSquare.php on line 235
