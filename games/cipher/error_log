@@ -350,3 +350,29 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 144
+[11-May-2023 16:02:57 UTC] PHP Warning:  Undefined array key "" in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 162
+[11-May-2023 16:02:57 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:03:18 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:03:39 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:04:27 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:04:30 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:05:39 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:05:41 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:05:49 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:05:53 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:06:01 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:06:14 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:06:50 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:06:56 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:06:59 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:07:01 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:07:05 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:07:09 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:07:11 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:07:18 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:07:27 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:07:35 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:07:41 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:07:52 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:07:55 UTC] PHP Warning:  Undefined array key 21 in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 294
+[11-May-2023 16:08:16 UTC] PHP Warning:  Undefined variable $highlightColor in /home/jachpa/public_html/mylocal.life/games/cipher/cipher.php on line 265

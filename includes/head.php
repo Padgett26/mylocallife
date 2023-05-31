@@ -2,16 +2,356 @@
 <link rel="shortcut icon" href="images/icon.png" />
 <meta http-equiv='Content-Type'     content='text/html; charset=UTF-8' />
 <meta name="viewport"               content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
-<?php
-echo "<meta name='keywords' content='$metaKeywords'>\n";
-echo "<meta name='description' content='$metaDesc'>\n";
-if ($slug != "" && $slug != " ") {
-    echo "<title>My Local Life || $page || $slug</title>\n";
-} else {
-    echo "<title>My Local Life || $page</title>\n";
-}
-?>
+<meta name="keywords"               content="<?php
+echo $metaKeywords;
+?>" />
+<meta name="description"            content="<?php
+echo $metaDesc;
+?>" />
+<meta property="fb:app_id"          content="539048382922093" />
+<meta property="og:site_name"       content="My Local Life" />
+<meta property="og:type"            content="article" />
 <link href="includes/lightbox2/css/lightbox.css" rel="stylesheet" />
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TBZJ9FM');</script>
+<!-- End Google Tag Manager -->
+<?php
+if ($page === "Articles" && filter_input ( INPUT_GET, 'articleDetail', FILTER_SANITIZE_NUMBER_INT ) >= 1) {
+	$article = filter_input ( INPUT_GET, 'articleDetail', FILTER_SANITIZE_NUMBER_INT );
+	$stmt = $db->prepare ( "SELECT articleTitle, articleText, pic1Name, pic1Ext, authorId, catId, youtube FROM articles WHERE id=?" );
+	$stmt->execute ( array (
+			$article
+	) );
+	$row = $stmt->fetch ();
+	if ($row) {
+		$arttitle = $row ['articleTitle'];
+		$artcontent = nl2br ( html_entity_decode ( $row ['articleText'], ENT_QUOTES ), $highlightColor );
+		$posContent = strripos ( $artcontent, "<br />" );
+		$ac = substr ( $artcontent, 0, $posContent - 8 );
+		$artpic1Name = $row ['pic1Name'];
+		$artpic1Ext = $row ['pic1Ext'];
+		$authorId = $row ['authorId'];
+		$cat = $row ['catId'];
+		$yout = $row ['youtube'];
+	}
+	$s = $db->prepare ( "SELECT category FROM articleCategories WHERE id=?" );
+	$s->execute ( array (
+			$cat
+	) );
+	$r = $s->fetch ();
+	$artCat = $r ['category'];
+
+	$headTitle = "<title>My Local Life || $artCat || $arttitle</title>";
+	?>
+    <meta property="og:url"         content="https://mylocal.life/index.php?page=Articles&articleDetail=<?php
+
+	echo $article;
+	?>">
+    <meta property="og:title"       content="<?php
+
+	echo $arttitle;
+	?>">
+
+    <?php
+	if (strlen ( $ac ) >= 250) {
+		$subContent1 = substr ( $ac, 0, 249 );
+		$posContent1 = strripos ( $subContent1, " " );
+		$acontent = substr ( $ac, 0, $posContent1 );
+	} else {
+		$acontent = $ac;
+	}
+
+	if (file_exists ( "userPics/$authorId/$artpic1Name.$artpic1Ext" )) {
+		list ( $widthm, $heightm ) = (getimagesize ( "userPics/$authorId/$artpic1Name.$artpic1Ext" ) != null) ? getimagesize ( "userPics/$authorId/$artpic1Name.$artpic1Ext" ) : null;
+		echo "<meta property='og:image'       content='https://mylocal.life/userPics/$authorId/$artpic1Name.$artpic1Ext'>\n";
+		echo "<meta property='og:image:width'       content='$widthm'>\n";
+		echo "<meta property='og:image:height'       content='$heightm'>\n";
+	} elseif ($yout != '0') {
+		echo "<meta property='og:video'       content='https://youtu.be/$yout'>\n";
+		echo "<meta property='og:video:secure_url'       content='https://youtu.be/$yout'>\n";
+		echo "<meta property='og:video:type'       content='application/x-shockwave-flash'>\n";
+		echo "<meta property='og:video:width'       content='560'>\n";
+		echo "<meta property='og:video:height'       content='315'>\n";
+		echo "<meta property='og:image'       content='https://i.ytimg.com/vi/$yout/hqdefault.jpg'>\n";
+	} else {
+		echo "<meta property='og:image'       content='https://mylocal.life/images/logo.png'>\n";
+		echo "<meta property='og:image:width'       content='256'>\n";
+		echo "<meta property='og:image:height'       content='256'>\n";
+	}
+	?>
+    <meta property="og:description" content="<?php
+
+	echo $acontent;
+	?>">
+
+    <?php
+} elseif ($page === "Photo" && filter_input ( INPUT_GET, 'photoShow', FILTER_SANITIZE_NUMBER_INT )) {
+	$pId = filter_input ( INPUT_GET, 'photoShow', FILTER_SANITIZE_NUMBER_INT );
+	$stmt = $db->prepare ( "SELECT photoTitle, photoText, authorId FROM photoJournalism WHERE id=?" );
+	$stmt->execute ( array (
+			$pId
+	) );
+	$row = $stmt->fetch ();
+	if ($row) {
+		$photoTitle = $row ['photoTitle'];
+		$photoText = nl2br ( html_entity_decode ( $row ['photoText'], ENT_QUOTES ), $highlightColor );
+		$posContent = strripos ( $photoText, "<br />" );
+		$ac = substr ( $photoText, 0, $posContent - 8 );
+		$authorId = $row ['authorId'];
+	}
+	$stmt2 = $db->prepare ( "SELECT photoName, photoExt FROM photoList WHERE photoId=? ORDER BY photoOrder LIMIT 1" );
+	$stmt2->execute ( array (
+			$pId
+	) );
+	$row2 = $stmt2->fetch ();
+	if ($row2) {
+		$photoName = $row2 ['photoName'];
+		$photoExt = $row2 ['photoExt'];
+	}
+
+	$headTitle = "<title>My Local Life || PhotoShow || $photoTitle</title>";
+	?>
+    <meta property="og:url"         content="https://mylocal.life/index.php?page=Photo&photoShow=<?php
+
+	echo $pId;
+	?>">
+    <meta property="og:title"       content="<?php
+
+	echo $photoTitle;
+	?>">
+    <?php
+	if (strlen ( $ac ) >= 250) {
+		$subContent1 = substr ( $ac, 0, 249 );
+		$posContent1 = strripos ( $subContent1, " " );
+		$acontent = substr ( $ac, 0, $posContent1 );
+	} else {
+		$acontent = $ac;
+	}
+
+	if (file_exists ( "userPics/$authorId/$photoName.$photoExt" )) {
+		list ( $widthm, $heightm ) = (getimagesize ( "userPics/$authorId/$photoName.$photoExt" ) != null) ? getimagesize ( "userPics/$authorId/$photoName.$photoExt" ) : null;
+		echo "<meta property='og:image'       content='https://mylocal.life/userPics/$authorId/$photoName.$photoExt'>\n";
+		echo "<meta property='og:image:width'       content='$widthm'>\n";
+		echo "<meta property='og:image:height'       content='$heightm'>\n";
+	} else {
+		echo "<meta property='og:image'       content='https://mylocal.life/images/logo.png'>\n";
+		echo "<meta property='og:image:width'       content='256'>\n";
+		echo "<meta property='og:image:height'       content='256'>\n";
+	}
+	?>
+    <meta property="og:description" content="<?php
+
+	echo $acontent;
+	?>">
+
+    <?php
+} elseif ($page === "Blog" && filter_input ( INPUT_GET, 'blogUserId', FILTER_SANITIZE_NUMBER_INT )) {
+	$blogId = filter_input ( INPUT_GET, 'blogUserId', FILTER_SANITIZE_NUMBER_INT );
+	$stmt = $db->prepare ( "SELECT blogTitle, blogDesc, blogPic, blogPicExt FROM blogDescriptions WHERE userId=?" );
+	$stmt->execute ( array (
+			$blogId
+	) );
+	$row = $stmt->fetch ();
+	if ($row) {
+		$blogtitle = $row ['blogTitle'];
+		$blogcontent = nl2br ( html_entity_decode ( $row ['blogDesc'], ENT_QUOTES ), $highlightColor );
+		$blogpic = $row ['blogPic'];
+		$blogpicExt = $row ['blogPicExt'];
+	}
+	$headTitle = "<title>My Local Life || Blog || $blogtitle</title>";
+
+	if (strlen ( $blogcontent ) >= 250) {
+		$subContent1 = substr ( $blogcontent, 0, 249 );
+		$posContent1 = strripos ( $subContent1, " " );
+		$acontent = substr ( $blogcontent, 0, $posContent1 );
+	} else {
+		$acontent = $blogcontent;
+	}
+	if (file_exists ( "userPics/$blogId/$blogpic.$blogpicExt" )) {
+		list ( $widthm, $heightm ) = (getimagesize ( "userPics/$blogId/$blogpic.$blogpicExt" ) != null) ? getimagesize ( "userPics/$blogId/$blogpic.$blogpicExt" ) : null;
+		echo "<meta property='og:image'       content='https://mylocal.life/userPics/$blogId/$blogpic.$blogpicExt'>";
+		echo "<meta property='og:image:width'       content='$widthm'>\n";
+		echo "<meta property='og:image:height'       content='$heightm'>\n";
+	} else {
+		echo "<meta property='og:image'       content='https://mylocal.life/images/logo.png'>";
+		echo "<meta property='og:image:width'       content='256'>\n";
+		echo "<meta property='og:image:height'       content='256'>\n";
+	}
+	?>
+    <meta property="og:url"         content="https://mylocal.life/index.php?page=Blog&blogUserId=<?php
+
+	echo $blogId;
+	?>">
+    <meta property="og:title"       content="<?php
+
+	echo $blogtitle;
+	?>">
+    <meta property="og:description" content="<?php
+
+	echo $acontent;
+	?>...">
+
+    <?php
+} elseif ($page === "calendar" && filter_input ( INPUT_GET, 'h', FILTER_SANITIZE_NUMBER_INT )) {
+	$calId = filter_input ( INPUT_GET, 'h', FILTER_SANITIZE_NUMBER_INT );
+	$stmtc = $db->prepare ( "SELECT startTime, title, writeUp, picture, userId FROM calendar WHERE id = ?" );
+	$stmtc->execute ( array (
+			$calId
+	) );
+	$rowc = $stmtc->fetch ();
+	if ($rowc) {
+		$cStartTime = $rowc ['startTime'];
+		$cTitle = $rowc ['title'];
+		$cW = nl2br ( $rowc ['writeUp'] );
+		$cWriteUp = str_replace ( "<br />", " ", $cW );
+		$cPic = $rowc ['picture'];
+		$cUserId = $rowc ['userId'];
+	}
+	$headTitle = "<title>My Local Life || Upcoming Events || $cTitle</title>";
+
+	if (strlen ( $cWriteUp ) >= 250) {
+		$subContent1 = substr ( $cWriteUp, 0, 249 );
+		$posContent1 = strripos ( $subContent1, " " );
+		$acontent = substr ( $cWriteUp, 0, $posContent1 );
+	} else {
+		$acontent = $cWriteUp;
+	}
+	if (file_exists ( "userPics/$cUserId/$cPic" ) && getimagesize ( "userPics/$cUserId/$cPic" ) >= 1000) {
+		list ( $widthm, $heightm ) = getimagesize ( "userPics/$cUserId/$cPic" );
+		echo "<meta property='og:image'       content='https://mylocal.life/userPics/$cUserId/$cPic'>\n";
+		echo "<meta property='og:image:width'       content='$widthm'>\n";
+		echo "<meta property='og:image:height'       content='$heightm'>\n";
+	} else {
+		echo "<meta property='og:image'       content='https://mylocal.life/images/logo.png'>\n";
+		echo "<meta property='og:image:width'       content='256'>\n";
+		echo "<meta property='og:image:height'       content='256'>\n";
+	}
+	?>
+    <meta property="og:url"         content="https://mylocal.life/index.php?page=calendar&h=<?php
+
+	echo $calId;
+	?>#c<?php
+
+	echo $calId;
+	?>">
+    <meta property="og:title"       content="<?php
+
+	echo $cTitle;
+	?>">
+    <meta property="og:description" content="<?php
+
+	echo date ( 'M jS, g:ia', $cStartTime )?> - <?php
+
+	echo $acontent;
+	?>...">
+
+    <?php
+} elseif ($page === "Survey" && filter_input ( INPUT_GET, 'surveyId', FILTER_SANITIZE_NUMBER_INT )) {
+	$surId = filter_input ( INPUT_GET, 'surveyId', FILTER_SANITIZE_NUMBER_INT );
+	$stmt = $db->prepare ( "SELECT userId, surveyTitle, introText, picName FROM survey WHERE id=?" );
+	$stmt->execute ( array (
+			$surId
+	) );
+	$row = $stmt->fetch ();
+	if ($row) {
+		$uId = $row ['userId'];
+		$surveyTitle = $row ['surveyTitle'];
+		$introText = $row ['introText'];
+		$picName = $row ['picName'];
+	}
+	$headTitle = "<title>My Local Life || Survey || $surveyTitle</title>";
+
+	if (strlen ( $introText ) >= 250) {
+		$subContent1 = substr ( $introText, 0, 249 );
+		$posContent1 = strripos ( $subContent1, " " );
+		$acontent = substr ( $introText, 0, $posContent1 );
+	}
+	if (file_exists ( "userPics/$uId/$picName" )) {
+		list ( $widthm, $heightm ) = (getimagesize ( "userPics/$uId/$picName" ) != null) ? getimagesize ( "userPics/$uId/$picName" ) : null;
+		echo "<meta property='og:image'       content='https://mylocal.life/userPics/$uId/$picName'>";
+		echo "<meta property='og:image:width'       content='$widthm'>\n";
+		echo "<meta property='og:image:height'       content='$heightm'>\n";
+	} else {
+		echo "<meta property='og:image'       content='https://mylocal.life/images/logo.png'>";
+		echo "<meta property='og:image:width'       content='256'>\n";
+		echo "<meta property='og:image:height'       content='256'>\n";
+	}
+	?>
+    <meta property="og:url"         content="https://mylocal.life/index.php?page=Survey&surveyId=<?php
+
+	echo $surId;
+	?>">
+    <meta property="og:title"       content="<?php
+
+	echo $surveyTitle;
+	?>">
+    <meta property="og:description" content="<?php
+
+	echo $acontent;
+	?>...">
+
+    <?php
+} elseif ($page === "Writings" && filter_input ( INPUT_GET, 'authorId', FILTER_SANITIZE_NUMBER_INT ) && filter_input ( INPUT_GET, 'bookId', FILTER_SANITIZE_NUMBER_INT )) {
+	$authorId = filter_input ( INPUT_GET, 'authorId', FILTER_SANITIZE_NUMBER_INT );
+	$bookId = filter_input ( INPUT_GET, 'bookId', FILTER_SANITIZE_NUMBER_INT );
+	$stmt = $db->prepare ( "SELECT t1.title, t2.firstName, t2.lastName, t1.chText FROM myWritings AS t1 INNER JOIN users AS t2 ON t1.authorId = t2.id WHERE authorId = ? AND bookId = ? AND part='1' AND chapter = '1'" );
+	$stmt->execute ( array (
+			$authorId,
+			$bookId
+	) );
+	$row = $stmt->fetch ();
+	if ($row) {
+		$title = $row [0];
+		$firstName = $row [1];
+		$lastName = $row [2];
+		$chText = $row [3];
+	}
+	$headTitle = "<title>My Local Life || Writings || $title</title>";
+
+	if (strlen ( $chText ) >= 250) {
+		$subContent1 = substr ( $chText, 0, 249 );
+		$posContent1 = strripos ( $subContent1, " " );
+		$acontent = substr ( $chText, 0, $posContent1 );
+	}
+	echo "<meta property='og:image'       content='https://mylocal.life/images/logo.png'>";
+	echo "<meta property='og:image:width'       content='256'>\n";
+	echo "<meta property='og:image:height'       content='256'>\n";
+	?>
+    <meta property="og:url"         content="https://mylocal.life/index.php?page=Writings&authorId=<?php
+	echo $authorId;
+	?>&bookId=<?php
+	echo $bookId;
+	?>&part=1&chapter=1">
+    <meta property="og:title"       content="<?php
+
+	echo $title . " -by " . $firstName . " " . $lastName;
+	?>">
+    <meta property="og:description" content="<?php
+
+	echo $acontent;
+	?>...">
+
+    <?php
+} else {
+	$headTitle = "<title>My Local Life</title>";
+	?>
+    <meta property="og:image"       content="https://mylocal.life/images/logo.png">
+    <meta property='og:image:width'       content='256'>
+    <meta property='og:image:height'       content='256'>
+    <meta property="og:url"         content="https://mylocal.life">
+    <meta property="og:title"       content="My Local Life">
+    <meta property="og:description" content="<?php
+
+	echo $metaDesc;
+	?>">
+    <?php
+}
+echo "$headTitle\n";
+?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 <script>
@@ -112,7 +452,7 @@ if ($slug != "" && $slug != " ") {
 
 <?php
 if ($page == "editArticle" || $page == "editPhoto" || $page == "submitNews") {
-    ?>
+	?>
         function agreeToTerms() {
             var d = document.getElementById("articleSubmit");
             d.disabled = (d.disabled === true) ? false : true;
@@ -121,7 +461,7 @@ if ($page == "editArticle" || $page == "editPhoto" || $page == "submitNews") {
 }
 
 if ($page == "myAccount" || $page == "Gadmin") {
-    ?>
+	?>
         function showAdPrices(price) {
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function ()
@@ -138,7 +478,7 @@ if ($page == "myAccount" || $page == "Gadmin") {
 }
 
 if ($page == "Survey") {
-    ?>
+	?>
         function updateSurvey(sId,IP,questionNumber,answer) {
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function ()
@@ -155,7 +495,7 @@ if ($page == "Survey") {
 }
 
 if ($page == "Blog") {
-    ?>
+	?>
         function setBlogFav(blogId, me) {
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function ()
@@ -182,7 +522,7 @@ if ($page == "Blog") {
     <?php
 }
 if ($page == "editClassified") {
-    ?>
+	?>
         function chrCount(max) {
             var x = document.getElementById("clsText").value;
             var l = x.length;
@@ -191,7 +531,7 @@ if ($page == "editClassified") {
     <?php
 }
 if ($page == "editWriting") {
-    ?>
+	?>
         function ModifySelection(tag, t) {
             var textarea = document.getElementById("textField" + t);
             if ('selectionStart' in textarea) {
@@ -231,33 +571,10 @@ if ($page == "editWriting") {
 </script>
 <?php
 if ($page == "Games") {
-    include "includes/gamesHead.php";
+	include "includes/gamesHead.php";
 }
 ?>
 <style type="text/css">
-<?php
-$textSize = ($myTheme == "Large Text") ? "font-size:1.25em;" : "font-size:1em;";
-?>
-    body {
-        <?php
-        echo $textSize . "\n";
-        ?>
-    }
-    .menu {
-        height:30px;
-        float:left;
-        padding:0px 20px;
-    }
-    .subMenu {
-        display:none;
-        text-align:center;
-        background-color: #ffffff;
-        color: <?php
-        echo $highlightColor;
-        ?>;
-        width:100%;
-        padding:20px 0px;
-    }
     a {
         color: black;
         text-decoration: none;

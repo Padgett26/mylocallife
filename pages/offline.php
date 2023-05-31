@@ -1,1 +1,0 @@
-<div style="font-weight:bold; text-align:center; font-size:2em;">You do not appear to be online</div>
