@@ -322,8 +322,7 @@ function displayClassified ($getId, $db, $highlightColor)
     $classifiedTitle = $row['classifiedTitle'];
     $classifiedText = nl2br(
             make_links_clickable(
-                    html_entity_decode($row['classifiedText'], ENT_QUOTES),
-                    $highlightColor));
+                    html_entity_decode($row['classifiedText'], ENT_QUOTES)));
     $chrlen = $row['classifiedTextLength'];
     $picName = $row['picName'];
     $picExt = $row['picExt'];

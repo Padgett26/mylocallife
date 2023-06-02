@@ -257,8 +257,7 @@ while ($row = $stmt->fetch()) {
     $cTitle = $row['title'];
     $cWriteUp = nl2br(
             make_links_clickable(
-                    html_entity_decode($row['writeUp'], ENT_QUOTES),
-                    $highlightColor));
+                    html_entity_decode($row['writeUp'], ENT_QUOTES)));
     $cPic = $row['picture'];
     $cUserId = $row['userId'];
 
