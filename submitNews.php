@@ -1,177 +1,186 @@
 <?php
 $submitted = 0;
 
-if (filter_input ( INPUT_POST, 'artUpTime', FILTER_SANITIZE_NUMBER_INT )) {
-	$artTime = filter_input ( INPUT_POST, 'artUpTime', FILTER_SANITIZE_NUMBER_INT );
-	$name = filter_input ( INPUT_POST, 'name', FILTER_SANITIZE_STRING );
-	$email = (filter_input ( INPUT_POST, 'email', FILTER_VALIDATE_EMAIL )) ? filter_input ( INPUT_POST, 'email', FILTER_SANITIZE_EMAIL ) : "x";
-	$title = filter_input ( INPUT_POST, 'title', FILTER_SANITIZE_STRING );
-	$a2 = htmlEntities ( trim ( $_POST ['content'] ), ENT_QUOTES );
-	$con = filter_var ( $a2, FILTER_SANITIZE_STRING );
+if (filter_input(INPUT_POST, 'artUpTime', FILTER_SANITIZE_NUMBER_INT)) {
+    $artTime = filter_input(INPUT_POST, 'artUpTime', FILTER_SANITIZE_NUMBER_INT);
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $email = (filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) ? filter_input(
+            INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) : "x";
+    $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
+    $a2 = htmlEntities(trim($_POST['content']), ENT_QUOTES);
+    $con = filter_var($a2, FILTER_SANITIZE_STRING);
 
-	if ($email != "x") {
-		$content = $name . "<br />" . $email . "<br /><br />" . $con;
+    if ($email != "x") {
+        $content = $name . "<br />" . $email . "<br /><br />" . $con;
 
-		$newartstmt = $db->prepare ( "INSERT INTO articles VALUES" . "(NULL, 'title', 'text', '0', 'jpg', NULL, '0', 'jpg', NULL, ?, 'local', '0', '0', NULL, '0', '0', '0', NULL, '0', NULL, '0', '', '0', '0', '0', '0')" );
-		$newartstmt->execute ( array (
-				$artTime
-		) );
-		$getidstmt = $db->prepare ( "SELECT id FROM articles WHERE postedDate=? ORDER BY id DESC LIMIT 1" );
-		$getidstmt->execute ( array (
-				$artTime
-		) );
-		$getidrow = $getidstmt->fetch ();
-		$artId = $getidrow ['id'];
-		$newartstmt2 = $db->prepare ( "INSERT INTO reported VALUES" . "(NULL, '0', ?, '0', ?, '0', '', '0', '0')" );
-		$newartstmt2->execute ( array (
-				$artId,
-				$time
-		) );
-		$artstmt = $db->prepare ( "UPDATE articles SET articleTitle=?, articleText=? WHERE id=?" );
-		$artstmt->execute ( array (
-				$title,
-				$content,
-				$artId
-		) );
+        $newartstmt = $db->prepare(
+                "INSERT INTO articles VALUES" .
+                "(NULL, 'title', 'text', '0', 'jpg', NULL, '0', 'jpg', NULL, ?, 'local', '0', '0', NULL, '0', '0', '0', NULL, '0', NULL, '0', '', '0', '0', '0', '0')");
+        $newartstmt->execute(array(
+                $artTime
+        ));
+        $getidstmt = $db->prepare(
+                "SELECT id FROM articles WHERE postedDate=? ORDER BY id DESC LIMIT 1");
+        $getidstmt->execute(array(
+                $artTime
+        ));
+        $getidrow = $getidstmt->fetch();
+        $artId = $getidrow['id'];
+        $newartstmt2 = $db->prepare(
+                "INSERT INTO reported VALUES" .
+                "(NULL, '0', ?, '0', ?, '0', '', '0', '0')");
+        $newartstmt2->execute(array(
+                $artId,
+                $time
+        ));
+        $artstmt = $db->prepare(
+                "UPDATE articles SET articleTitle=?, articleText=? WHERE id=?");
+        $artstmt->execute(array(
+                $title,
+                $content,
+                $artId
+        ));
 
-		$image1 = $_FILES ["image1"] ["tmp_name"];
-		$image1Name = $artTime;
-		list ( $width1, $height1 ) = (getimagesize ( $image1 ) != null) ? getimagesize ( $image1 ) : null;
-		if ($width1 != null && $height1 != null) {
-			$image1Type = getPicType ( $_FILES ["image1"] ['type'] );
-			processPic ( $myId, $image1Name, '800', '800', $image1, $image1Type );
-			processThumbPic ( $myId, $image1Name, '100', '100', $image1, $image1Type );
-			$p1stmt = $db->prepare ( "UPDATE articles SET pic1Name=?, pic1Ext=? WHERE id=?" );
-			$p1stmt->execute ( array (
-					$image1Name,
-					$image1Type,
-					$artId
-			) );
-		}
-		$image2 = $_FILES ["image2"] ["tmp_name"];
-		$image2Name = ($artTime + 1);
-		list ( $width2, $height2 ) = (getimagesize ( $image2 ) != null) ? getimagesize ( $image2 ) : null;
-		if ($width2 != null && $height2 != null) {
-			$image2Type = getPicType ( $_FILES ["image2"] ['type'] );
-			processPic ( $myId, $image2Name, '800', '800', $image2, $image2Type );
-			processThumbPic ( $myId, $image2Name, '100', '100', $image2, $image2Type );
-			$p2stmt = $db->prepare ( "UPDATE articles SET pic2Name=?, pic2Ext=? WHERE id=?" );
-			$p2stmt->execute ( array (
-					$image2Name,
-					$image2Type,
-					$artId
-			) );
-		}
+        $image1 = $_FILES["image1"]["tmp_name"];
+        list ($width1, $height1) = (getimagesize($image1) != null) ? getimagesize(
+                $image1) : null;
+        if ($width1 != null && $height1 != null) {
+            $image1Type = getPicType($_FILES["image1"]['type']);
+            $image1Name = $artTime . "." . $image1Type;
+            processPic("$domain/userPics/$myId", $image1Name, $image1, 800, 150);
+            $p1stmt = $db->prepare(
+                    "UPDATE articles SET pic1Name=?, pic1Ext=? WHERE id=?");
+            $p1stmt->execute(array(
+                    $artTime,
+                    $image1Type,
+                    $artId
+            ));
+        }
+        $image2 = $_FILES["image2"]["tmp_name"];
+        list ($width2, $height2) = (getimagesize($image2) != null) ? getimagesize(
+                $image2) : null;
+        if ($width2 != null && $height2 != null) {
+            $image2Type = getPicType($_FILES["image2"]['type']);
+            $image2Name = ($artTime + 1) . "." . $image2Type;
+            processPic("$domain/userPics/$myId", $image2Name, $image2, 800, 150);
+            $p2stmt = $db->prepare(
+                    "UPDATE articles SET pic2Name=?, pic2Ext=? WHERE id=?");
+            $p2stmt->execute(array(
+                    ($artTime + 1),
+                    $image2Type,
+                    $artId
+            ));
+        }
 
-		$submitted = 1;
-	}
+        $submitted = 1;
+    }
 }
 ?>
 
 <div id='mainTableBox' style='padding:40px 0px;'>
     <header style='text-align:center; font-weight:bold; font-size:2em;'>Submit a news story or idea</header>
     <?php
-				if ($submitted == 1) {
-					?>
+    if ($submitted == 1) {
+        ?>
         <div style="text-align:center; margin:20px 0px; font-weight:bold; font-size:1.25em; color:<?php
 
-					echo $highlightColor;
-					?>;">
+        echo $highlightColor;
+        ?>;">
             Your news submission has been received.<br /><span style="font-size:1.5em;">Thank you</span><br />If we have any questions, or if we need any facts verified, we will contact you through the email address you provided.
         </div>
         <?php
-				}
-				?>
+    }
+    ?>
     <div style="text-align:center; margin:20px 0px;">
         Please complete this form with your article, or story idea. All fields marked with an (*), are required.<br />Thank you for your input
     </div>
     <?php
-				$tdStyle1 = "width:300px; height:40px;";
-				$tdStyle2 = "width:500px; height:40px;";
-				?>
+    $tdStyle1 = "width:300px; height:40px;";
+    $tdStyle2 = "width:500px; height:40px;";
+    ?>
     <form action="index.php?page=submitNews" method="post" enctype='multipart/form-data'>
         <table cellpadding="0px" cellspacing="0px" border="0px">
             <tr>
                 <td style="<?php
 
-																echo $tdStyle1;
-																?>">
+                echo $tdStyle1;
+                ?>">
                     Name (*)
                 </td>
                 <td style="<?php
 
-																echo $tdStyle2;
-																?>">
+                echo $tdStyle2;
+                ?>">
                     <input type="text" name="name" value="" placeholder="Name" size="60" required />
                 </td>
             </tr>
             <tr>
                 <td style="<?php
 
-																echo $tdStyle1;
-																?>">
+                echo $tdStyle1;
+                ?>">
                     Email (*)
                 </td>
                 <td style="<?php
 
-																echo $tdStyle2;
-																?>">
+                echo $tdStyle2;
+                ?>">
                     <input type="email" name="email" value="" placeholder="Email" size="60" required />
                 </td>
             </tr>
             <tr>
                 <td style="<?php
 
-																echo $tdStyle1;
-																?>">
+                echo $tdStyle1;
+                ?>">
                     Title / Subject
                 </td>
                 <td style="<?php
 
-																echo $tdStyle2;
-																?>">
+                echo $tdStyle2;
+                ?>">
                     <input type="text" name="title" value="" placeholder="Either the title of your article, or the subject matter" size="60" />
                 </td>
             </tr>
             <tr>
                 <td style="<?php
 
-																echo $tdStyle1;
-																?>">
+                echo $tdStyle1;
+                ?>">
                     Upload an image #1 (main)
                 </td>
                 <td style="<?php
 
-																echo $tdStyle2;
-																?>">
+                echo $tdStyle2;
+                ?>">
                     <input type="file" name="image1" />
                 </td>
             </tr>
             <tr>
                 <td style="<?php
 
-																echo $tdStyle1;
-																?>">
+                echo $tdStyle1;
+                ?>">
                     Upload an image #2 (secondary)
                 </td>
                 <td style="<?php
 
-																echo $tdStyle2;
-																?>">
+                echo $tdStyle2;
+                ?>">
                     <input type="file" name="image2" />
                 </td>
             </tr>
             <tr>
                 <td style="<?php
 
-																echo $tdStyle1;
-																?>">
+                echo $tdStyle1;
+                ?>">
                     Content (*)
                 </td>
                 <td style="<?php
 
-																echo $tdStyle2;
-																?>">
+                echo $tdStyle2;
+                ?>">
 
                 </td>
             </tr>
@@ -196,18 +205,18 @@ if (filter_input ( INPUT_POST, 'artUpTime', FILTER_SANITIZE_NUMBER_INT )) {
             <tr>
                 <td style="<?php
 
-																echo $tdStyle1;
-																?>">
+                echo $tdStyle1;
+                ?>">
                     <input type="hidden" name="artUpTime" value="<?php
 
-																				echo $time;
-																				?>" />
+                    echo $time;
+                    ?>" />
                     <input type='submit' id='articleSubmit' disabled value=' Save changes ' />
                 </td>
                 <td style="<?php
 
-																echo $tdStyle2;
-																?>">
+                echo $tdStyle2;
+                ?>">
 
                 </td>
             </tr>

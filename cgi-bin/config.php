@@ -35,6 +35,7 @@ $showHelpingHands = 0;
 $showWritings = 1;
 $showSignUp = 1;
 
+$domain = "mylocal.life";
 $docRoot = htmlspecialchars(trim($_SERVER["DOCUMENT_ROOT"]));
 $testingSite = ($docRoot == "/home/jachpa/public_html/padgett-online.com") ? '1' : '0';
 
@@ -68,18 +69,6 @@ $months = array(
 );
 
 // *** Log out ***
-function destroySession ()
-{
-    $_SESSION = array();
-
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000, $params["path"],
-                $params["domain"], $params["secure"], $params["httponly"]);
-    }
-
-    session_destroy();
-}
 
 if (! empty($GET['logout']) &&
         htmlspecialchars(trim($_GET["logout"]), ENT_QUOTES) == 'yep') {
