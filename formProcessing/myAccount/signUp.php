@@ -105,7 +105,7 @@ if ($title != "" && $description != "") {
         if ($width != null && $height != null) {
             $imageType = getPicType($_FILES["image"]['type']);
             $imageName = $time . "." . $imageType;
-            processPic("$domain/userPics/$myId", $imageName, $tmpFile, 400, 150);
+            processPic("userPics/$myId", $imageName, $tmpFile, 400, 150);
             $p1stmt = $db->prepare("UPDATE signUp SET pic=? WHERE id=?");
             $p1stmt->execute(array(
                     $imageName,

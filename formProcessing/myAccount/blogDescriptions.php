@@ -36,7 +36,7 @@ if ($delBlog == '1') {
     if ($width != null && $height != null) {
         $imageType = getPicType($_FILES["image"]['type']);
         $imageName = $time . "." . $imageType;
-        processPic("$domain/userPics/$myId", $imageName, $tmpFile, 800, 100);
+        processPic("userPics/$myId", $imageName, $tmpFile, 800, 100);
         $p1stmt = $db->prepare(
                 "UPDATE blogDescriptions SET blogPic=?, blogPicExt=? WHERE userId=?");
         $p1stmt->execute(array(

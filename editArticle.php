@@ -180,7 +180,7 @@ if ($myAccess != 0) {
 				<?php
         }
         $d = ($artId != "new") ? "" : " disabled";
-        echo "<input type='hidden' name='inReplyTo' value='$inReplyTo' /><input type='hidden' name='imageWidth' value='800' /><input type='hidden' name='imageHeight' value='800' /><input type='hidden' name='editedArticle' value='$artId' /><input type='submit' id='articleSubmit'$d value=' Save changes ' />";
+        echo "<input type='hidden' name='inReplyTo' value='$inReplyTo' /><input type='hidden' name='editedArticle' value='$artId' /><input type='submit' id='articleSubmit'$d value=' Save changes ' />";
         ?>
 
 			</form>

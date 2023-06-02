@@ -47,7 +47,7 @@ if (filter_input(INPUT_POST, 'artUpTime', FILTER_SANITIZE_NUMBER_INT)) {
         if ($width1 != null && $height1 != null) {
             $image1Type = getPicType($_FILES["image1"]['type']);
             $image1Name = $artTime . "." . $image1Type;
-            processPic("$domain/userPics/$myId", $image1Name, $image1, 800, 150);
+            processPic("userPics/$myId", $image1Name, $image1, 800, 150);
             $p1stmt = $db->prepare(
                     "UPDATE articles SET pic1Name=?, pic1Ext=? WHERE id=?");
             $p1stmt->execute(array(
@@ -62,7 +62,7 @@ if (filter_input(INPUT_POST, 'artUpTime', FILTER_SANITIZE_NUMBER_INT)) {
         if ($width2 != null && $height2 != null) {
             $image2Type = getPicType($_FILES["image2"]['type']);
             $image2Name = ($artTime + 1) . "." . $image2Type;
-            processPic("$domain/userPics/$myId", $image2Name, $image2, 800, 150);
+            processPic("userPics/$myId", $image2Name, $image2, 800, 150);
             $p2stmt = $db->prepare(
                     "UPDATE articles SET pic2Name=?, pic2Ext=? WHERE id=?");
             $p2stmt->execute(array(

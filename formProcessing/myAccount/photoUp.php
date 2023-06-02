@@ -58,7 +58,7 @@ if ($delPhoto == '1') {
             if ($width != null && $height != null) {
                 $imageType = getPicType($_FILES["$key"]['type']);
                 $imageName = ($time + $iId) . "." . $imageType;
-                processPic("$domain/userPics/$myId", $imageName, $tmpFile, 1000,
+                processPic("userPics/$myId", $imageName, $tmpFile, 1000,
                         150);
                 $pstmt1 = $db->prepare(
                         "SELECT COUNT(*) FROM photoList WHERE photoId=?");

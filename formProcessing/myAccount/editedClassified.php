@@ -58,7 +58,7 @@ if ($delClassified == "1") {
         if ($width != null && $height != null) {
             $imageType = getPicType($_FILES["image"]['type']);
             $imageName = $time . "." . $imageType;
-            processPic("$domain/userPics/$myId", $imageName, $tmpFile, 250, 100);
+            processPic("userPics/$myId", $imageName, $tmpFile, 250, 100);
             $p1stmt = $db->prepare(
                     "UPDATE classifieds SET picName=?, picExt=? WHERE id=?");
             $p1stmt->execute(array(

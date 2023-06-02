@@ -43,7 +43,7 @@ if ($myId != '0') {
         if ($width != null && $height != null) {
             $imageType = getPicType($_FILES["image"]['type']);
             $imageName = $time . "." . $imageType;
-            processPic("$domain/userPics/$myId", $imageName, $tmpFile, 800, 150);
+            processPic("userPics/$myId", $imageName, $tmpFile, 800, 150);
             $p1stmt = $db->prepare("UPDATE calendar SET picture=? WHERE id=?");
             $p1stmt->execute(array(
                     $imageName,

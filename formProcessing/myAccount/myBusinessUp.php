@@ -38,7 +38,7 @@ list ($width1, $height1) = (getimagesize($tmpFile) != null) ? getimagesize(
 if ($width1 != null && $height1 != null) {
     $image1Type = getPicType($_FILES["image1"]['type']);
     $image1Name = ($time + 1) . "." . $image1Type;
-    processPic("$domain/userPics/$myId", $image1Name, $tmpFile, 800, 150);
+    processPic("userPics/$myId", $image1Name, $tmpFile, 800, 150);
     $p1stmt = $db->prepare(
             "UPDATE busiListing SET busiPic1=?, busiPicExt1=? WHERE userId=?");
     $p1stmt->execute(array(
@@ -53,7 +53,7 @@ list ($width2, $height2) = (getimagesize($tmpFile) != null) ? getimagesize(
 if ($width2 != null && $height2 != null) {
     $image2Type = getPicType($_FILES["image2"]['type']);
     $image2Name = ($time + 2) . "." . $image2Type;
-    processPic("$domain/userPics/$myId", $image2Name, $tmpFile, 800, 150);
+    processPic("userPics/$myId", $image2Name, $tmpFile, 800, 150);
     $p2stmt = $db->prepare(
             "UPDATE busiListing SET busiPic2=?, busiPicExt2=? WHERE userId=?");
     $p2stmt->execute(array(

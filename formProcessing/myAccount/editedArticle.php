@@ -11,21 +11,16 @@ $pic1Caption = trim(
         filter_input(INPUT_POST, 'pic1Caption', FILTER_SANITIZE_STRING));
 $pic2Caption = trim(
         filter_input(INPUT_POST, 'pic2Caption', FILTER_SANITIZE_STRING));
-$imageWidth = filter_input(INPUT_POST, 'imageWidth', FILTER_SANITIZE_NUMBER_INT);
 $inReplyTo = filter_input(INPUT_POST, 'inReplyTo', FILTER_SANITIZE_NUMBER_INT);
 $pd = filter_input(INPUT_POST, 'postedDate', FILTER_SANITIZE_NUMBER_INT);
 $pd2 = explode("-", $pd);
 $postedDate = mktime(0, 0, 0, $pd2[1], $pd2[2], $pd2[0]);
-$imageHeight = filter_input(INPUT_POST, 'imageHeight',
-        FILTER_SANITIZE_NUMBER_INT);
 $catId = filter_input(INPUT_POST, 'catId', FILTER_SANITIZE_NUMBER_INT);
 $yt = filter_input(INPUT_POST, 'youtube', FILTER_SANITIZE_URL) ? trim(
         filter_input(INPUT_POST, 'youtube', FILTER_SANITIZE_URL)) : '///0';
 $youtube = explode("/", $yt);
-$pdfText1 = trim(
-        filter_input(INPUT_POST, 'pdfText1', FILTER_SANITIZE_STRING));
-$pdfText2 = trim(
-        filter_input(INPUT_POST, 'pdfText2', FILTER_SANITIZE_STRING));
+$pdfText1 = trim(filter_input(INPUT_POST, 'pdfText1', FILTER_SANITIZE_STRING));
+$pdfText2 = trim(filter_input(INPUT_POST, 'pdfText2', FILTER_SANITIZE_STRING));
 $delPdf1 = (filter_input(INPUT_POST, 'delPdf1', FILTER_SANITIZE_NUMBER_INT) ==
         '1') ? "1" : "0";
 $delPdf2 = (filter_input(INPUT_POST, 'delPdf2', FILTER_SANITIZE_NUMBER_INT) ==
@@ -105,7 +100,7 @@ if ($delArticle == "1") {
         if ($width1 != null && $height1 != null) {
             $image1Type = getPicType($_FILES["image1"]['type']);
             $image1Name = $time . "." . $image1Type;
-            processPic("$domain/userPics/$myId", $image1Name, $tmpFile1, 800,
+            processPic("userPics/$myId", $image1Name, $tmpFile1, 800,
                     100);
             $p1stmt = $db->prepare(
                     "UPDATE articles SET pic1Name=?, pic1Ext=? WHERE id=?");
@@ -123,7 +118,7 @@ if ($delArticle == "1") {
         if ($width2 != null && $height2 != null) {
             $image2Type = getPicType($_FILES["image2"]['type']);
             $image2Name = ($time + 1) . "." . $image2Type;
-            processPic("$domain/userPics/$myId", $image2Name, $tmpFile2, 800,
+            processPic("userPics/$myId", $image2Name, $tmpFile2, 800,
                     100);
             $p1stmt = $db->prepare(
                     "UPDATE articles SET pic2Name=?, pic2Ext=? WHERE id=?");

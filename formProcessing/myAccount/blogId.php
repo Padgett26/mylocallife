@@ -89,7 +89,7 @@ if ($delBlogEntry == '1') {
     if ($width1 != null && $height1 != null) {
         $imageType1 = getPicType($_FILES["image1"]['type']);
         $imageName1 = $time . "." . $imageType1;
-        processPic("$domain/userPics/$myId", $imageName1, $tmpFile, 800, 100);
+        processPic("userPics/$myId", $imageName1, $tmpFile, 800, 100);
         $p1stmt = $db->prepare(
                 "UPDATE blog SET picName1=?, picExt1=? WHERE id=?");
         $p1stmt->execute(array(
@@ -104,7 +104,7 @@ if ($delBlogEntry == '1') {
     if ($width2 != null && $height2 != null) {
         $imageType2 = getPicType($_FILES["image2"]['type']);
         $imageName2 = ($time + 1) . "." . $imageType2;
-        processPic("$domain/userPics/$myId", $imageName2, $tmpFile2, 800, 100);
+        processPic("userPics/$myId", $imageName2, $tmpFile2, 800, 100);
         $p2stmt = $db->prepare(
                 "UPDATE blog SET picName2=?, picExt2=? WHERE id=?");
         $p2stmt->execute(array(
@@ -119,7 +119,7 @@ if ($delBlogEntry == '1') {
     if ($width3 != null && $height3 != null) {
         $imageType3 = getPicType($_FILES["image3"]['type']);
         $imageName3 = ($time + 2) . "." . $imageType3;
-        processPic("$domain/userPics/$myId", $imageName3, $tmpFile3, 800, 100);
+        processPic("userPics/$myId", $imageName3, $tmpFile3, 800, 100);
         $p3stmt = $db->prepare(
                 "UPDATE blog SET picName3=?, picExt3=? WHERE id=?");
         $p3stmt->execute(array(
@@ -134,7 +134,7 @@ if ($delBlogEntry == '1') {
     if ($width4 != null && $height4 != null) {
         $imageType4 = getPicType($_FILES["image4"]['type']);
         $imageName4 = ($time + 3) . "." . $imageType4;
-        processPic("$domain/userPics/$myId", $imageName4, $tmpFile4, 800, 100);
+        processPic("userPics/$myId", $imageName4, $tmpFile4, 800, 100);
         $p4stmt = $db->prepare(
                 "UPDATE blog SET picName4=?, picExt4=? WHERE id=?");
         $p4stmt->execute(array(

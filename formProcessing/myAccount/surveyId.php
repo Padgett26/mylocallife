@@ -330,7 +330,7 @@ if ($delSurvey == '1') {
     if ($width1 != null && $height1 != null) {
         $image1Type = getPicType($_FILES["imageIntro"]['type']);
         $image1Name = $time . "." . $image1Type;
-        processPic("$domain/userPics/$myId", $image1Name, $tmpFile, 1000, 150);
+        processPic("userPics/$myId", $image1Name, $tmpFile, 1000, 150);
         $p1stmt = $db->prepare("UPDATE survey SET picName=? WHERE id=?");
         $p1stmt->execute(array(
                 $image1Name,
@@ -347,7 +347,7 @@ if ($delSurvey == '1') {
             if ($width != null && $height != null) {
                 $imageType = getPicType($_FILES["$key"]['type']);
                 $imageName = ($time + $iId) . "." . $imageType;
-                processPic("$domain/userPics/$myId", $imageName, $tmpFile, 1000,
+                processPic("userPics/$myId", $imageName, $tmpFile, 1000,
                         150);
                 $pstmt3 = $db->prepare(
                         "UPDATE surveyQuestions SET picName = ? WHERE id = ?");
@@ -366,7 +366,7 @@ if ($delSurvey == '1') {
             if ($width != null && $height != null) {
                 $imageType = getPicType($_FILES["$key"]['type']);
                 $imageName = ($time + $iId) . "." . $imageType;
-                processPic("$domain/userPics/$myId", $imageName, $tmpFile, 1000,
+                processPic("userPics/$myId", $imageName, $tmpFile, 1000,
                         150);
                 $s1 = $db->prepare(
                         "SELECT id FROM surveyQuestions WHERE surveyId = ? && ticNew = ?");

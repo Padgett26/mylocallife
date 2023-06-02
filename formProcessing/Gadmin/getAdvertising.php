@@ -48,7 +48,7 @@ if ($delAd == '1') {
     if ($width != null && $height != null) {
         $imageType = getPicType($_FILES["adImage"]['type']);
         $imageName = $time . "." . $imageType;
-        processPic("$domain/userPics/$adUserId", $imageName, $tmpFile, 1100, 300);
+        processPic("userPics/$adUserId", $imageName, $tmpFile, 1100, 300);
         $astmt = $db->prepare(
                 "UPDATE advertising SET adName=?, adExt=? WHERE id=?");
         $astmt->execute(array(

@@ -54,7 +54,7 @@ if ($delAd == '1') {
             $x = 200;
             $y = 300;
         }
-        processPic("$domain/userPics/$myId", $time . '.' . $imageType, $adImage,
+        processPic("userPics/$myId", $time . '.' . $imageType, $adImage,
                 1100, 300);
         $astmt = $db->prepare(
                 "UPDATE advertising SET adName=?, adExt=? WHERE id=?");

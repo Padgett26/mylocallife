@@ -70,7 +70,7 @@ if ($delStrip == "1") {
     if ($width != null && $height != null) {
         $imageType = getPicType($_FILES["image"]['type']);
         $imageName = $time . "." . $imageType;
-        processPic("$domain/userPics/$myId", $imageName, $tmpFile, 800, 150);
+        processPic("userPics/$myId", $imageName, $tmpFile, 800, 150);
         $p1stmt = $db->prepare(
                 "UPDATE strips SET picName=?, picExt=? WHERE id=?");
         $p1stmt->execute(array(
@@ -87,7 +87,7 @@ if ($delStrip == "1") {
         $imageBackType = getPicType($_FILES["imageBack"]['type']);
         $imageBackName = str_replace(" ", "",
                 strtolower("back" . $stripTitle)) . "." . $imageBackType;
-        processPic("$domain/userPics/$myId", $imageBackName, $imageBack, 800,
+        processPic("userPics/$myId", $imageBackName, $imageBack, 800,
                 150);
         $p1stmt = $db->prepare(
                 "UPDATE strips SET backExt=? WHERE userId=? && stripTitle=?");
