@@ -69,7 +69,6 @@ $months = array(
 );
 
 // *** Log out ***
-
 if (! empty($GET['logout']) &&
         htmlspecialchars(trim($_GET["logout"]), ENT_QUOTES) == 'yep') {
     destroySession();
